@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prudhvi S Chundru | Senior AI / GenAI Engineer</title>
+    <meta name="description"
+        content="Senior AI / Generative AI Engineer specializing in RAG systems, LLM evaluation, LoRA/PEFT fine-tuning, fraud modeling, and cloud-native MLOps." />
+    <meta name="theme-color" content="#0b1220" />
+
+    <!-- Optional: Social preview (add og-image.png later) -->
+    <meta property="og:title" content="Prudhvi S Chundru | Senior AI / GenAI Engineer" />
+    <meta property="og:description"
+        content="RAG systems, LLM evaluation, LoRA/PEFT fine-tuning, fraud modeling, and cloud-native MLOps across GCP & Azure." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <style>
+        :root {
+            --bg: #0b1220;
+            --panel: #0f1b33;
+            --panel2: #0c1730;
+            --text: #e7eefc;
+            --muted: #aab6d6;
+            --line: rgba(231, 238, 252, .12);
+            --brand: #7aa2ff;
+            --brand2: #57d3ff;
+            --good: #43f0a6;
+            --warn: #ffd166;
+            --shadow: 0 18px 55px rgba(0, 0, 0, .35);
+            --radius: 18px;
+            --max: 1120px;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        }
+
+        /* Light theme */
+        [data-theme="light"] {
+            --bg: #f6f8ff;
+            --panel: #ffffff;
+            --panel2: #ffffff;
+            --text: #111827;
+            --muted: #4b5563;
+            --line: rgba(17, 24, 39, .12);
+            --brand: #2f63ff;
+            --brand2: #0ea5e9;
+            --shadow: 0 16px 45px rgba(17, 24, 39, .10);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--sans);
+            background:
+                radial-gradient(1200px 700px at 15% -10%, rgba(122, 162, 255, .22), transparent 60%),
+                radial-gradient(1000px 700px at 85% -20%, rgba(87, 211, 255, .18), transparent 62%),
+                radial-gradient(900px 600px at 50% 120%, rgba(67, 240, 166, .10), transparent 55%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.55;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        a:hover {
+            opacity: .9
+        }
+
+        .container {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 28px 18px 80px;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(14px);
+            background: linear-gradient(to bottom, rgba(11, 18, 32, .85), rgba(11, 18, 32, .45));
+            border-bottom: 1px solid var(--line);
+        }
+
+        [data-theme="light"] .topbar {
+            background: linear-gradient(to bottom, rgba(246, 248, 255, .92), rgba(246, 248, 255, .65));
+        }
+
+        .topbar-inner {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 750;
+            letter-spacing: .2px;
+        }
+
+        /* Profile photo in circle */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 999px;
+            object-fit: cover;
+            border: 2px solid var(--line);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, .25);
+            background: rgba(255, 255, 255, .06);
+            flex: 0 0 auto;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: left center;
+        }
+
+        body.scrolled .avatar {
+            width: 34px;
+            height: 34px;
+            border: 1px solid var(--line);
+        }
+
+        @media (max-width: 520px) {
+            .avatar {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        nav {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            font-size: 14px;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        nav a {
+            padding: 7px 10px;
+            border-radius: 999px;
+        }
+
+        nav a:hover {
+            background: rgba(122, 162, 255, .10);
+            color: var(--text);
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 24px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .02);
+            border-radius: 999px;
+            color: var(--text);
+            cursor: pointer;
+            font-weight: 650;
+            transition: .15s ease;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+        }
+
+        [data-theme="light"] .btn {
+            background: rgba(17, 24, 39, .03);
+        }
+
+        .btn.primary {
+            border: 0;
+            background: linear-gradient(135deg, var(--brand), var(--brand2));
+            color: #07101f;
+        }
+
+        .btn.primary:hover {
+            filter: saturate(1.05);
+        }
+
+        .hero {
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 920px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        [data-theme="light"] .card {
+            background: linear-gradient(180deg, rgba(17, 24, 39, .02), rgba(17, 24, 39, .01));
+        }
+
+        .card-inner {
+            padding: 22px;
+        }
+
+        .kicker {
+            color: var(--muted);
+            font-weight: 650;
+            letter-spacing: .16em;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 10px 0 10px;
+            font-size: 42px;
+            line-height: 1.08;
+            letter-spacing: -.02em;
+        }
+
+        @media (max-width: 520px) {
+            h1 {
+                font-size: 34px;
+            }
+        }
+
+        .headline {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 70ch;
+            margin: 0 0 14px;
+        }
+
+        .pillrow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 16px 0 4px;
+        }
+
+        .pill {
+            font-size: 13px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: rgba(122, 162, 255, .08);
+            color: var(--text);
+        }
+
+        .pill.good {
+            background: rgba(67, 240, 166, .10);
+        }
+
+        .pill.warn {
+            background: rgba(255, 209, 102, .10);
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            margin-top: 14px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .meta b {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .statgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .stat {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px 14px;
+            background: rgba(0, 0, 0, .12);
+        }
+
+        [data-theme="light"] .stat {
+            background: rgba(17, 24, 39, .03);
+        }
+
+        .stat .num {
+            font-family: var(--mono);
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -.02em;
+        }
+
+        .stat .lbl {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        section {
+            margin-top: 18px;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 14px;
+            margin: 24px 0 10px;
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-size: 18px;
+            letter-spacing: .02em;
+        }
+
+        .section-title p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .item {
+            border-top: 1px solid var(--line);
+            padding: 16px 0;
+        }
+
+        .item:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .role {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .role h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .role .sub {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        .role .time {
+            font-family: var(--mono);
+            color: var(--muted);
+            font-size: 13px;
+            white-space: nowrap;
+            padding: 6px 10px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .03);
+        }
+
+        ul {
+            margin: 10px 0 0 18px;
+            padding: 0;
+        }
+
+        li {
+            margin: 7px 0;
+            color: var(--text);
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .chip {
+            font-size: 12.5px;
+            padding: 7px 9px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .02);
+            color: var(--muted);
+        }
+
+        .footer {
+            margin-top: 34px;
+            color: var(--muted);
+            font-size: 13px;
+            border-top: 1px solid var(--line);
+            padding-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">
+                <!-- Put your photo in the same folder and name it profile.jpg (or change below) -->
+                <img class="avatar" src="photo.jpg" alt="Prudhvi S Chundru" />
+                <span>Prudhvi S Chundru</span>
+            </div>
+
+            <nav aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="actions">
+                <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">
+                    <span id="themeIcon" aria-hidden="true">🌙</span>
+                    <span class="sr-only">Toggle theme</span>
+                </button>
+                <a class="btn primary" href="resume.pdf" download type="application/pdf">Download Resume</a>
+                <a class="btn" href="#contact">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <div class="card" id="about">
+                <div class="card-inner">
+                    <div class="kicker">Senior AI / Generative AI Engineer</div>
+                    <h1>Production-grade RAG & LLM Systems<br />with measurable business impact.</h1>
+                    <p class="headline">
+                        6+ years designing and deploying large-scale ML and LLM systems across fintech and healthcare.
+                        Specialized in <b>RAG platforms</b>, <b>hybrid retrieval</b>, <b>LLM evaluation</b>, and
+                        <b>LoRA/PEFT fine-tuning</b> under
+                        compliance constraints — plus fraud modeling, distributed pipelines, and cloud-native MLOps
+                        across GCP
+                        & Azure.
+                    </p>
+
+                    <div class="pillrow">
+                        <span class="pill good">RAG Platforms · Hybrid Retrieval</span>
+                        <span class="pill">Cross-Encoder Reranking</span>
+                        <span class="pill">LoRA/PEFT Fine-tuning</span>
+                        <span class="pill warn">LLM Cost/Latency Optimization</span>
+                        <span class="pill">Fraud Modeling · XGBoost/LightGBM</span>
+                    </div>
+
+                    <div class="meta">
+                        <div>📍 <b>Lubbock, TX</b></div>
+                        <div>📞 <b>(806) 559-6739</b></div>
+                        <div>✉️ <b><a href="mailto:prudhvichundru01@gmail.com">prudhvichundru01@gmail.com</a></b></div>
+                        <div>🔗 <b><a href="https://www.linkedin.com/in/prudhvi-s-chundru/" target="_blank"
+                                    rel="noreferrer">LinkedIn</a></b></div>
+                        <div>💻 <b><a href="https://github.com/prudhvi2k24" target="_blank"
+                                    rel="noreferrer">GitHub</a></b></div>
+                    </div>
+
+                    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+                        <a class="btn primary" href="resume.pdf" download type="application/pdf">Download Resume</a>
+                        <a class="btn" href="#experience">View Experience</a>
+                        <a class="btn" href="#projects">See Projects</a>
+                        <a class="btn" href="#contact">Get in touch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="kicker">Highlights</div>
+                    <div class="statgrid" style="margin-top:12px;">
+                        <div class="stat">
+                            <div class="num">~12M/mo</div>
+                            <div class="lbl">Transactions supported (RAG)</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">~3TB</div>
+                            <div class="lbl">Financial docs indexed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">~5M/day</div>
+                            <div class="lbl">Fraud pipeline volume</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">99.9%</div>
+                            <div class="lbl">Service uptime (K8s rollout)</div>
+                        </div>
+                    </div>
+
+                    <div class="chips" style="margin-top:14px;">
+                        <span class="chip">GCP: Vertex AI · BigQuery · GKE</span>
+                        <span class="chip">Azure: Azure ML · AKS · Azure OpenAI</span>
+                        <span class="chip">LangChain · FAISS · Pinecone · Qdrant</span>
+                        <span class="chip">MLflow · Docker · Kubernetes</span>
+                        <span class="chip">PyTorch · HF Transformers</span>
+                    </div>
+
+                    <div style="margin-top:14px; color:var(--muted); font-size:14px;">
+                        <b>Focus:</b> reliable, scalable, governance-ready AI systems that translate business objectives
+                        into
+                        measurable ML impact.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <section id="experience">
+            <div class="section-title">
+                <h2>Experience</h2>
+                <p>Recent roles emphasizing scale, evaluation rigor, and production reliability.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+
+                    <div class="item">
+                        <div class="role">
+                            <div>
+                                <h3>U.S. Bank — AI/ML & GenAI Engineer</h3>
+                                <div class="sub">Enterprise RAG, LLM evaluation, fine-tuning, and fraud detection
+                                    architecture</div>
+                            </div>
+                            <div class="time">Mar 2025 – Present</div>
+                        </div>
+
+                        <ul>
+                            <li>Architected an enterprise RAG platform indexing <b>~3TB</b> of financial documents and
+                                supporting
+                                <b>~12M monthly transactions</b> using LangChain, FAISS/Pinecone, and OpenAI GPT APIs.
+                            </li>
+                            <li>Evaluated embedding models (OpenAI vs open-source transformers) using
+                                <b>precision@k</b>, latency
+                                benchmarks, and cost-per-query analysis prior to production deployment.
+                            </li>
+                            <li>Implemented <b>cross-encoder reranking</b> to improve retrieval precision by <b>15%</b>
+                                and reduce
+                                hallucinated outputs.</li>
+                            <li>Ran domain adaptation experiments with <b>LoRA/PEFT fine-tuning</b> in PyTorch,
+                                improving accuracy by
+                                <b>9%</b> while reducing GPU cost by <b>~60%</b> vs full fine-tuning.
+                            </li>
+                            <li>Built a structured <b>LLM evaluation framework</b> (hallucination rate, grounding
+                                adherence, latency)
+                                and deployed guardrails using confidence thresholds + post-generation validation.</li>
+                            <li>Redesigned fraud detection architecture processing <b>~5M daily transactions</b> using
+                                XGBoost/LightGBM
+                                and distributed feature pipelines (PySpark + BigQuery), improving detection accuracy by
+                                <b>22%</b>.
+                            </li>
+                            <li>Introduced retrieval caching + token optimization to reduce LLM API costs by <b>~28%</b>
+                                without
+                                degrading answer quality.</li>
+                            <li>Designed CI/CD ML pipelines (Vertex AI Pipelines, MLflow, GitHub Actions), cutting
+                                deployment cycle
+                                from weeks to <b>&lt;72 hours</b>.</li>
+                            <li>Deployed containerized services on Docker + Kubernetes (GKE) with shadow → canary → prod
+                                rollouts,
+                                achieving <b>99.9%</b> uptime and reducing incidents by <b>40%</b>.</li>
+                            <li>Authored ADR/RFC docs defining retrieval boundaries, scaling strategy, and governance
+                                model; mentored
+                                <b>3–5 engineers</b> on RAG, fine-tuning, and evaluation standards.
+                            </li>
+                        </ul>
+
+                        <div class="chips">
+                            <span class="chip">LangChain</span><span class="chip">FAISS</span><span
+                                class="chip">Pinecone</span><span class="chip">OpenAI APIs</span>
+                            <span class="chip">PyTorch + PEFT</span><span class="chip">Vertex AI</span><span
+                                class="chip">BigQuery</span><span class="chip">GKE</span>
+                            <span class="chip">MLflow</span><span class="chip">XGBoost/LightGBM</span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="role">
+                            <div>
+                                <h3>Health Care Service Corporation — AI/ML Engineer</h3>
+                                <div class="sub">PHI-compliant RAG, governance pipelines, drift monitoring, and SLAs
+                                </div>
+                            </div>
+                            <div class="time">May 2024 – Mar 2025</div>
+                        </div>
+
+                        <ul>
+                            <li>Owned end-to-end architecture of a <b>PHI-compliant RAG</b> platform indexing
+                                <b>~1.8M</b> healthcare
+                                documents (embedding strategy, chunking policy, retrieval configuration, benchmarks).
+                            </li>
+                            <li>Established LLM evaluation standards (precision@k, grounding accuracy, hallucination
+                                rate) and
+                                formalized acceptance criteria before production rollout.</li>
+                            <li>Led model selection between Azure OpenAI and self-hosted transformers balancing
+                                <b>latency, compliance,
+                                    cost</b>, and operational complexity.
+                            </li>
+                            <li>Designed governance + redaction pipelines to ensure PHI-safe inference across LLM
+                                workflows.</li>
+                            <li>Defined drift monitoring thresholds and retraining triggers using MLflow + Azure ML
+                                registry, reducing
+                                production degradation incidents by <b>40%</b>.</li>
+                            <li>Guided containerization and AKS deployment design for controlled rollouts/rollback
+                                safety; served as
+                                technical point of contact across analytics + infra teams.</li>
+                        </ul>
+
+                        <div class="chips">
+                            <span class="chip">Azure OpenAI</span><span class="chip">Azure ML</span><span
+                                class="chip">AKS</span><span class="chip">MLflow</span>
+                            <span class="chip">PHI Governance</span><span class="chip">Evaluation Standards</span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="role">
+                            <div>
+                                <h3>TCS Global — ML Engineer</h3>
+                                <div class="sub">Fraud detection pipelines, distributed Spark workflows, SageMaker
+                                    migration</div>
+                            </div>
+                            <div class="time">Jan 2021 – Dec 2023</div>
+                        </div>
+
+                        <ul>
+                            <li>Led redesign of fraud detection pipelines processing <b>2+ TB</b> transactional data;
+                                defined
+                                distributed Spark workflows + data partitioning strategies.</li>
+                            <li>Defined ensemble modeling (XGBoost/LightGBM) and threshold calibration aligned with
+                                financial risk
+                                tolerance.</li>
+                            <li>Built evaluation protocol with cost-sensitive metrics and false-positive impact
+                                analysis.</li>
+                            <li>Designed ingestion with AWS Glue + Step Functions for reliable multi-source
+                                orchestration.</li>
+                            <li>Migrated model training to SageMaker distributed training, reducing training time by
+                                <b>40%</b>; owned
+                                Dockerized inference deployment integration.
+                            </li>
+                        </ul>
+
+                        <div class="chips">
+                            <span class="chip">Spark</span><span class="chip">AWS Glue</span><span class="chip">Step
+                                Functions</span><span class="chip">SageMaker</span>
+                            <span class="chip">XGBoost/LightGBM</span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="role">
+                            <div>
+                                <h3>IBM — ML Engineer</h3>
+                                <div class="sub">Anomaly detection pipelines, experimentation standards, infra
+                                    automation</div>
+                            </div>
+                            <div class="time">Jan 2019 – Dec 2020</div>
+                        </div>
+
+                        <ul>
+                            <li>Designed scalable ML pipeline architecture using PySpark for enterprise anomaly
+                                detection use cases.
+                            </li>
+                            <li>Defined feature engineering + experimentation strategy improving model accuracy by
+                                <b>12–15%</b>.
+                            </li>
+                            <li>Standardized reproducible experimentation and monitoring using CloudWatch; automated
+                                infra provisioning
+                                using Terraform.</li>
+                            <li>Collaborated with platform teams to integrate ML services into distributed enterprise
+                                systems.</li>
+                        </ul>
+
+                        <div class="chips">
+                            <span class="chip">PySpark</span><span class="chip">AWS CloudWatch</span><span
+                                class="chip">Terraform</span>
+                            <span class="chip">ML Monitoring</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="section-title">
+                <h2>Selected Projects</h2>
+                <p>Hands-on systems showing retrieval rigor, fine-tuning, and deployability.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="role">
+                            <div>
+                                <h3>Intelligent Document Retrieval & Q&A (RAG Assistant)</h3>
+                                <div class="sub">Texas Tech University — Hybrid retrieval + evaluation dashboard</div>
+                            </div>
+                            <div class="time">Jul 2025 – Oct 2025</div>
+                        </div>
+
+                        <ul>
+                            <li>Implemented hybrid RAG (dense FAISS + lexical search) to improve robustness across
+                                multi-domain
+                                queries.</li>
+                            <li>Benchmarked embeddings (OpenAI vs BGE-large vs E5) with <b>precision@k</b> and
+                                <b>MRR</b> across varied
+                                query types.
+                            </li>
+                            <li>Added cross-encoder reranking to increase <b>precision@5 by 18%</b> without increasing
+                                retrieval
+                                depth.</li>
+                            <li>Conducted LoRA fine-tuning (HF + PEFT) to improve domain classification + formatting
+                                consistency.</li>
+                            <li>Built hallucination mitigation with confidence scoring + post-generation validation;
+                                reduced inference
+                                cost by <b>25%</b> via token optimization.</li>
+                            <li>Deployed microservice pipeline using FastAPI + Docker + Kubernetes with async streaming
+                                responses and
+                                an evaluation dashboard.</li>
+                        </ul>
+
+                        <div class="chips">
+                            <span class="chip">FAISS</span><span class="chip">Hybrid Search</span><span
+                                class="chip">Cross-Encoder</span>
+                            <span class="chip">PEFT/LoRA</span><span class="chip">FastAPI</span><span
+                                class="chip">Kubernetes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="role">
+                            <div>
+                                <h3>Hope Speech Detection</h3>
+                                <div class="sub">Multi-class NLP classifier under noisy, imbalanced text</div>
+                            </div>
+                            <div class="time">Mar 2025 – Jun 2025</div>
+                        </div>
+
+                        <ul>
+                            <li>Built multi-class NLP classifier on <b>~50K</b> labeled samples; handled severe
+                                imbalance (~1:6) with
+                                weighted CE + focal loss.</li>
+                            <li>Benchmarked TF-IDF + Logistic Regression vs BiLSTM vs transformer fine-tuning
+                                (BERT/RoBERTa), selecting
+                                best PR balance.</li>
+                            <li>Fine-tuned transformers in PyTorch (HF) tuning learning rate schedules + batch size;
+                                improved macro-F1
+                                by <b>12%</b> over baseline.</li>
+                            <li>Performed stratified CV + error analysis (sarcasm/context ambiguity) and calibrated
+                                thresholds for
+                                deployment tradeoffs.</li>
+                            <li>Exposed inference via Dockerized FastAPI service.</li>
+                        </ul>
+
+                        <div class="chips">
+                            <span class="chip">PyTorch</span><span class="chip">Hugging Face</span><span
+                                class="chip">Focal Loss</span>
+                            <span class="chip">Macro-F1</span><span class="chip">FastAPI</span><span
+                                class="chip">Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="grid-2">
+                        <div>
+                            <div class="kicker">GenAI / LLM</div>
+                            <div class="chips" style="margin-top:10px;">
+                                <span class="chip">RAG</span><span class="chip">LangChain</span><span class="chip">LLM
+                                    Evaluation</span>
+                                <span class="chip">FAISS</span><span class="chip">Pinecone</span><span
+                                    class="chip">Qdrant</span>
+                                <span class="chip">Cross-Encoder Reranking</span><span class="chip">Guardrails</span>
+                                <span class="chip">LoRA / PEFT</span><span class="chip">Token Optimization</span>
+                            </div>
+
+                            <div class="kicker" style="margin-top:16px;">ML / DL</div>
+                            <div class="chips" style="margin-top:10px;">
+                                <span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span
+                                    class="chip">scikit-learn</span>
+                                <span class="chip">XGBoost</span><span class="chip">LightGBM</span><span
+                                    class="chip">Calibration</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="kicker">Data / MLOps / Cloud</div>
+                            <div class="chips" style="margin-top:10px;">
+                                <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Spark /
+                                    PySpark</span>
+                                <span class="chip">Airflow</span><span class="chip">Databricks</span><span
+                                    class="chip">MLflow</span>
+                                <span class="chip">Docker</span><span class="chip">Kubernetes</span>
+                                <span class="chip">Vertex AI</span><span class="chip">BigQuery</span>
+                                <span class="chip">Azure ML</span><span class="chip">AKS</span>
+                                <span class="chip">SageMaker</span><span class="chip">Terraform</span>
+                                <span class="chip">GitHub Actions</span><span class="chip">Azure DevOps</span>
+                            </div>
+
+                            <div class="kicker" style="margin-top:16px;">Backend</div>
+                            <div class="chips" style="margin-top:10px;">
+                                <span class="chip">FastAPI</span><span class="chip">REST</span><span
+                                    class="chip">gRPC</span><span class="chip">WebSockets</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications -->
+        <section id="education">
+            <div class="section-title">
+                <h2>Education & Certifications</h2>
+                <p>Formal background plus industry credentials.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="item">
+                            <div class="role">
+                                <div>
+                                    <h3>Texas Tech University — M.S. Computer Science</h3>
+                                    <div class="sub">Coursework: Software Testing and QA, DSA, Automated SE, Machine
+                                        Learning</div>
+                                </div>
+                                <div class="time">Jan 2024 – Dec 2025</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="role">
+                                <div>
+                                    <h3>Pragati Engineering College — B.E. (ECE)</h3>
+                                    <div class="sub">Electronics & Communications</div>
+                                </div>
+                                <div class="time">Jun 2016 – Dec 2020</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="kicker">Certifications</div>
+                        <ul>
+                            <li>AWS Solutions Architect Associate</li>
+                            <li>Meta Back-End Developer (Coursera)</li>
+                            <li>Linux Fundamentals (Linux Foundation)</li>
+                            <li>Python Programming Fundamentals (Coursera)</li>
+                            <li>Test-Driven Development with Python (Coursera)</li>
+                            <li>Python Automation with PyTest & Selenium (Udemy)</li>
+                            <li>SQL for Data Science (Udemy)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="section-title">
+                <h2>Contact</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <p style="margin-top:0; color:var(--muted);">
+                        Interested in roles involving RAG platforms, LLM evaluation, fine-tuning (LoRA/PEFT), fraud
+                        modeling, or
+                        cloud-native MLOps? Reach out:
+                    </p>
+
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+                        <a class="btn primary" href="mailto:prudhvichundru01@gmail.com">Email</a>
+                        <a class="btn" href="tel:+18065596739">Call</a>
+                        <a class="btn" href="https://www.linkedin.com/in/prudhvi-s-chundru/" target="_blank"
+                            rel="noreferrer">LinkedIn</a>
+                        <a class="btn" href="https://github.com/prudhvi2k24" target="_blank" rel="noreferrer">GitHub</a>
+                        <a class="btn primary" href="resume.pdf" download type="application/pdf"
+                            style="margin-left:auto;">Download
+                            Resume</a>
+                    </div>
+
+                    <div class="footer">
+                        <div>© <span id="year"></span> Prudhvi S Chundru</div>
+                        <div style="font-family:var(--mono);">Built with HTML/CSS • Mobile-ready</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Theme toggle with persistence (keeps SR-only text intact)
+        const root = document.body;
+        const btn = document.getElementById('themeBtn');
+        const icon = document.getElementById('themeIcon');
+
+        const saved = localStorage.getItem('theme');
+        if (saved) root.setAttribute('data-theme', saved);
+
+        function renderThemeIcon() {
+            const theme = root.getAttribute('data-theme') || 'dark';
+            if (icon) icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+        }
+
+        btn.addEventListener('click', () => {
+            const cur = root.getAttribute('data-theme') || 'dark';
+            const next = cur === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            renderThemeIcon();
+        });
+
+        renderThemeIcon();
+
+        // Footer year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth anchor scroll (basic)
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                const id = a.getAttribute('href');
+                if (!id || id === '#') return;
+                const el = document.querySelector(id);
+                if (!el) return;
+                e.preventDefault();
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Scroll listener for avatar resize
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        // Initial check in case page is loaded slightly scrolled down
+        handleScroll();
+    </script>
+</body>
+
+</html>
